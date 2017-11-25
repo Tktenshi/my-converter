@@ -1,0 +1,14 @@
+.converter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+
+    margin-top: 8rem; /*!!!!!!!!!!!!!!!!!!!!!*/
+    /*border: 1px solid green;*/
+}
+
+.converter-btn {
+    height: 4.5em;
+}
