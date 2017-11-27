@@ -1,10 +1,11 @@
 import Converter from '../components/Converter'
 import {connect} from 'react-redux';
-import {btnCkicked} from '../actions/pageActions';
+import {btnCkicked, requestCurrencies} from '../actions/pageActions';
 
 const mapStateToProps = (state) => {
     return {
-        btnClick: state.btnClick
+        btnClick: state.btnClick,
+        currency: state.converter.currency
     };
 };
 
@@ -13,6 +14,10 @@ const mapDispatchToProps = (dispatch) => {
         btnClicked: function () {
             console.log("Container dispatch btn clicked");
             dispatch(btnCkicked("lzlzlz"))
+        },
+        requestCurrencies: function () {
+            console.log("Container dispatch requestCurrencies");
+            dispatch(requestCurrencies(dispatch))
         }
     };
 };

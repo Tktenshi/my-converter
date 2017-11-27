@@ -6,11 +6,16 @@ import {Button} from "react-bootstrap";
 import Lang from "../utils/Lang";
 
 class Converter extends React.Component {
+    componentWillReceiveProps(nextProps) {
+
+    }
+
     render() {
         return (
             <div className="converter">
                 <Currency title={Lang("I have")} value="1" unitVal={"1 RUB = 70 EUR"}/>
-                <Button bsStyle="info" bsSize="large" className="converter-btn" onClick={this.props.btnClicked}>f</Button>
+                <Button bsStyle="info" bsSize="large" className="converter-btn"
+                        onClick={this.props.requestCurrencies}>f</Button>
                 <Currency title={Lang("I want to buy")} value="70000000000000000" unitVal={"1 EUR = X RUB"}/>
             </div>
         )

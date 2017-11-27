@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { page } from './page';
+import { converterReducer } from './converterReducer';
 
 export default combineReducers({
-    page
+    converter: converterReducer
 });
