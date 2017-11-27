@@ -7,9 +7,10 @@ class CurrencyBtnGroup extends React.Component {
         return (
             <div>
                 <ButtonGroup>
-                    {this.props.symbols.map(function (btn, i) {
+                    {this.props.symbols.map((btn, i) => {
                         return (
-                            <Button key={i} className="currency-btn" bsStyle="primary">{btn}</Button>
+                            <Button key={i} onClick={this.props.handleClick} className="currency-btn"
+                                    bsStyle="primary" active={this.props.activeBtn === btn}>{btn}</Button>
                         )
                     })}
                     <DropdownButton bsStyle="primary" className="currency-btn" title="" id="bg-nested-dropdown">

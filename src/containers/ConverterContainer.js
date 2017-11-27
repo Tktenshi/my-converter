@@ -5,7 +5,9 @@ import {btnCkicked, requestCurrencies} from '../actions/pageActions';
 const mapStateToProps = (state) => {
     return {
         btnClick: state.btnClick,
-        currency: state.converter.currency
+        currency: state.converter.currency,
+        sourceCur: state.converter.sourceCur,
+        targetCur: state.converter.targetCur,
     };
 };
 
@@ -14,10 +16,6 @@ const mapDispatchToProps = (dispatch) => {
         btnClicked: function () {
             console.log("Container dispatch btn clicked");
             dispatch(btnCkicked("lzlzlz"))
-        },
-        requestCurrencies: function () {
-            console.log("Container dispatch requestCurrencies");
-            dispatch(requestCurrencies(dispatch))
         }
     };
 };

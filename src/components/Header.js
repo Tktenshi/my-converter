@@ -32,13 +32,6 @@ class Header extends React.Component {
                             <LinkContainer to="/about">
                                 <NavItem eventKey={1}>О программе</NavItem>
                             </LinkContainer>
-                            {/*<FormGroup controlId="formControlsSelect">*/}
-                                <ControlLabel>Select</ControlLabel>
-                                <FormControl componentClass="select" placeholder="select">
-                                    <option value="select">select</option>
-                                    <option value="other">...</option>
-                                </FormControl>
-                            {/*</FormGroup>*/}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
