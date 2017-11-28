@@ -3,37 +3,40 @@ import Currency from "../containers/CurrencyContainer";
 import '../styles/converter.css';
 import {Button} from "react-bootstrap";
 import Lang from "../utils/Lang";
-import {initVal} from "../consts/consts";
+import {unitV} from "../consts/consts";
 
 class Converter extends React.Component {
     constructor() {
         super();
         this.state = {
-            targetValue: " "
+            sourceValue: null,
         };
     }
 
-    componentWillReceiveProps(nextProp) {
-        // if(nextProp.targetValue) setTargetValue();
-    }
+    setSourceValue = (sourceValue) => {
+        this.setState({sourceValue});
+    };
 
-    setTargetValue = (sourceValue) => {
-        // console.log(value);
-        this.setState({targetValue: sourceValue * this.props.currencyData.rates[this.props.targetCur]});
+    getTargetValue = (coeff) => {
+        if (this.props.currencyData && this.state.sourceValue && (coeff || coeff === 0)) {
+            return this.state.sourceValue * coeff;
+        }
+        else return " "
     };
 
     render() {
+        const coeff = this.props.currencyData && this.props.currencyData.rates[this.props.targetCur];
         return (
             <div className="converter">
                 <Currency title={Lang("I have")}
-                          unitVal={`${initVal} ${this.props.sourceCur} = 70 ${this.props.targetCur}`}
+                          unitVal={coeff && `${unitV} ${this.props.sourceCur} = ${coeff} ${this.props.targetCur}`}
                           activeBtn={this.props.sourceCur}
-                          setTargetValue={this.setTargetValue}/>
+                          setSourceValue={this.setSourceValue}/>
                 <Button bsStyle="info" bsSize="large" className="converter-btn">f</Button>
                 <Currency title={Lang("I want to buy")}
-                          unitVal={`${initVal} ${this.props.targetCur} = X ${this.props.sourceCur}`}
+                          unitVal={coeff && `${unitV} ${this.props.targetCur} = ${1 / coeff} ${this.props.sourceCur}`}
                           activeBtn={this.props.targetCur}
-                          targetValue={this.state.targetValue || " "}/>
+                          targetValue={this.getTargetValue(coeff)}/>
             </div>
         )
     }

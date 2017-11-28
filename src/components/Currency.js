@@ -2,23 +2,25 @@ import React from 'react';
 import CurrencyBtnGroup from "./CurrencyBtnGroup";
 import {ControlLabel, InputGroup, FormControl} from "react-bootstrap";
 import '../styles/currency.css';
+import {initVal} from "../consts/consts";
 
 class Currency extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: this.props.targetValue || 1
+            value: this.props.targetValue || initVal
         };
     }
 
     componentDidMount() {
         if (!this.props.targetValue) {
             this.props.requestCurrencies(this.props.sourceCur);
+            this.props.setSourceValue(this.state.value);
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.targetValue) {
+        if (!!nextProps.targetValue) {
             this.setState({value: nextProps.targetValue});
         }
     }
@@ -26,7 +28,7 @@ class Currency extends React.Component {
     handleChange = (evt) => {
         if (!this.props.targetValue) {
             this.setState({value: evt.target.value});
-            this.props.setTargetValue(evt.target.value)
+            this.props.setSourceValue(evt.target.value)
         }
     };
 
@@ -34,7 +36,7 @@ class Currency extends React.Component {
         // window.btn = evt.target.innerText;
         this.props.sourceClick(evt.currentTarget.textContent);
         this.props.requestCurrencies(evt.currentTarget.textContent);
-        // this.props.setTargetValue(this.state.value)
+        // this.props.setSourceValue(this.state.value)
     };
 
     targetClick = (evt) => {

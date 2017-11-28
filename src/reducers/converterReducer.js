@@ -2,8 +2,8 @@ import {CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED, TARGET_CURRENCY_CHANGED} f
 
 const initionalState = {
     currencyData: null,
-    sourceCur: "RUB",
-    targetCur: "EUR",
+    sourceCur: "EUR",
+    targetCur: "RUB",
     defaultCurrencies: ["RUB", "EUR", "USD", "GBP"]
 };
 
