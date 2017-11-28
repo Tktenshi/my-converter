@@ -1,22 +1,22 @@
 import Converter from '../components/Converter'
 import {connect} from 'react-redux';
-import {btnCkicked, requestCurrencies} from '../actions/pageActions';
+// import {btnCkicked, requestCurrencies} from '../actions/pageActions';
 
 const mapStateToProps = (state) => {
     return {
-        btnClick: state.btnClick,
-        currency: state.converter.currency,
-        sourceCur: state.converter.sourceCur,
-        targetCur: state.converter.targetCur,
+        // btnClick: state.btnClick,
+        currencyData: state.converterRed.currencyData,
+        sourceCur: state.converterRed.sourceCur,
+        targetCur: state.converterRed.targetCur,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        btnClicked: function () {
-            console.log("Container dispatch btn clicked");
-            dispatch(btnCkicked("lzlzlz"))
-        }
+        // btnClicked: function () {
+        //     console.log("Container dispatch btn clicked");
+        //     dispatch(btnCkicked("lzlzlz"))
+        // }
     };
 };
 

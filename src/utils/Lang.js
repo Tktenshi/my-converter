@@ -8,5 +8,5 @@ export default function Lang(string) {
         "I want to buy": {ru: "Хочу приобрести", en: "I want to buy"}
     };
 
-    return data[string][lang];
+    return data[string][lang] || string;
 }

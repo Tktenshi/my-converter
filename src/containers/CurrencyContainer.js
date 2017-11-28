@@ -5,8 +5,8 @@ import {sourceClick, targetClick, requestCurrencies} from "../actions/pageAction
 
 const mapStateToProps = (state) => {
     return {
-        defaultCurrencies: state.converter.defaultCurrencies,
-        sourceCur: state.converter.sourceCur,
+        defaultCurrencies: state.converterRed.defaultCurrencies,
+        sourceCur: state.converterRed.sourceCur,
     };
 };
 
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(targetClick(currencyName))
         },
         requestCurrencies: function (currencyName) {
-            console.log("Container dispatch requestCurrencies");
+            // console.log("Container dispatch requestCurrencies");
             dispatch(requestCurrencies(currencyName))
         }
     };

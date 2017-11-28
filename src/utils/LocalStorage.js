@@ -12,6 +12,6 @@ export function getItem(item) {
     }
 }
 
-export function remove(item) {
+export function removeItem(item) {
     localStorage.removeItem(item);
 }

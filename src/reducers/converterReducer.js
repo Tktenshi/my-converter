@@ -1,7 +1,7 @@
-import {SOURCE_CURRENCY_CHANGED, TARGET_CURRENCY_CHANGED} from "../consts/actionTypeConsts";
+import {CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED, TARGET_CURRENCY_CHANGED} from "../consts/actionTypeConsts";
 
 const initionalState = {
-    currency: null,
+    currencyData: null,
     sourceCur: "RUB",
     targetCur: "EUR",
     defaultCurrencies: ["RUB", "EUR", "USD", "GBP"]
@@ -10,25 +10,25 @@ const initionalState = {
 export function converterReducer(state = initionalState, action) {
     // console.log(action);
     switch (action.type) {
-        case 'BUTTON_CLICKED':
+        // case 'BUTTON_CLICKED':
+        //     return {
+        //         ...state,
+        //         btnClick: action.payload
+        //     };
+        case CURRENCIES_RESPONSE:
+            // console.log("!!", action.payload);
             return {
                 ...state,
-                btnClick: action.payload
-            };
-        case 'CURRENCIES_RESPONSE':
-            console.log("!!", action.payload);
-            return {
-                ...state,
-                currency: action.payload
+                currencyData: action.payload
             };
         case SOURCE_CURRENCY_CHANGED:
-            console.log(SOURCE_CURRENCY_CHANGED, action.payload);
+            // console.log(SOURCE_CURRENCY_CHANGED, action.payload);
             return {
                 ...state,
                 sourceCur: action.payload
             };
         case TARGET_CURRENCY_CHANGED:
-            console.log(TARGET_CURRENCY_CHANGED, action.payload);
+            // console.log(TARGET_CURRENCY_CHANGED, action.payload);
             return {
                 ...state,
                 targetCur: action.payload

@@ -11,22 +11,22 @@ class Currency extends React.Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.targetValue) {
-            this.setState({value: nextProps.targetValue});
-        }
-    }
-
     componentDidMount() {
         if (!this.props.targetValue) {
             this.props.requestCurrencies(this.props.sourceCur);
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.targetValue) {
+            this.setState({value: nextProps.targetValue});
+        }
+    }
+
     handleChange = (evt) => {
         if (!this.props.targetValue) {
             this.setState({value: evt.target.value});
-            this.props.onCurrencyChanged(evt.target.value)
+            this.props.setTargetValue(evt.target.value)
         }
     };
 
@@ -34,12 +34,11 @@ class Currency extends React.Component {
         // window.btn = evt.target.innerText;
         this.props.sourceClick(evt.currentTarget.textContent);
         this.props.requestCurrencies(evt.currentTarget.textContent);
-        this.props.onCurrencyChanged(this.state.value)
+        // this.props.setTargetValue(this.state.value)
     };
 
     targetClick = (evt) => {
         this.props.targetClick(evt.currentTarget.textContent);
-        // this.props.onCurrencyChanged(evt.target.value)
     };
 
     render() {
