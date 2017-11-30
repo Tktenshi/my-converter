@@ -1,8 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 import "bootswatch/cerulean/bootstrap.css";
-// import logo from './logo.svg';
-// import './App.css';
 import Header from "./components/Header";
 import Converter from "./containers/ConverterContainer";
 import About from "./components/About";

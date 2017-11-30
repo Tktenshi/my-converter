@@ -2,6 +2,7 @@ import React from 'react';
 import {Navbar, NavDropdown, NavItem, Nav, MenuItem} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap"
 import {Link} from 'react-router-dom'
+import Lang from "../utils/Lang";
 
 class Header extends React.Component {
     render() {
@@ -10,17 +11,17 @@ class Header extends React.Component {
                 <Navbar inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link to="/">Конвертер валют</Link>
+                            <Link to="/">{Lang("Currency converter")}</Link>
                         </Navbar.Brand>
                         <Navbar.Toggle/>
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav>
                             <LinkContainer exact to="/">
-                                <NavItem eventKey={1}>Конвертер</NavItem>
+                                <NavItem eventKey={1}>{Lang("Converter")}</NavItem>
                             </LinkContainer>
-                            <NavItem eventKey={2} href="#">Настройки</NavItem>
-                            <NavDropdown eventKey={3} title="История" id="basic-nav-dropdown">
+                            <NavItem eventKey={2} href="#">{Lang("Settings")}</NavItem>
+                            <NavDropdown eventKey={3} title={Lang("History")} id="basic-nav-dropdown">
                                 <MenuItem eventKey={3.1}>Очистить историю</MenuItem>
                                 <MenuItem eventKey={3.2}>Another action</MenuItem>
                                 <MenuItem eventKey={3.3}>Something else here</MenuItem>
@@ -30,7 +31,7 @@ class Header extends React.Component {
                         </Nav>
                         <Nav pullRight>
                             <LinkContainer to="/about">
-                                <NavItem eventKey={1}>О программе</NavItem>
+                                <NavItem eventKey={1}>{Lang("About")}</NavItem>
                             </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>

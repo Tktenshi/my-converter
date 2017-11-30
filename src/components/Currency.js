@@ -2,7 +2,7 @@ import React from 'react';
 import CurrencyBtnGroup from "./CurrencyBtnGroup";
 import {ControlLabel, InputGroup, FormControl} from "react-bootstrap";
 import '../styles/currency.css';
-import {initVal} from "../consts/consts";
+import {initVal, maxValLen, roundUnitVal} from "../consts/consts";
 
 class Currency extends React.Component {
     constructor(props) {
@@ -27,15 +27,21 @@ class Currency extends React.Component {
 
     handleChange = (evt) => {
         if (!this.props.targetValue) {
-            this.setState({value: evt.target.value});
-            this.props.setSourceValue(evt.target.value)
+            const str = evt.target.value.replace(",", ".");
+            const regexp = new RegExp(`^\\d{0,${maxValLen}}(?:\\.\\d{0,${roundUnitVal}})?$`);
+            // if (str && /^\d{1,9}(?:\.\d{0,4})?$/.test(str) && str.length <= maxValLen)
+            if (regexp.test(str) && str.length <= maxValLen) {
+                this.setState({value: str});
+                this.props.setSourceValue(str)
+            }
         }
     };
 
     sourceClick = (evt) => {
-        // window.btn = evt.target.innerText;
-        this.props.sourceClick(evt.currentTarget.textContent);
-        this.props.requestCurrencies(evt.currentTarget.textContent);
+        if (this.props.sourceCur !== evt.currentTarget.textContent) {
+            this.props.sourceClick(evt.currentTarget.textContent);
+            this.props.requestCurrencies(evt.currentTarget.textContent);
+        }
         // this.props.setSourceValue(this.state.value)
     };
 

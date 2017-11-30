@@ -21,7 +21,7 @@ export function requestCurrencies(currency) {
                 return response.json();
             })
             .then(function (data) {
-                // console.log(data);
+                console.log(data);
                 dispatch({
                     type: CURRENCIES_RESPONSE,
                     payload: data

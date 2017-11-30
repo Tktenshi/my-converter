@@ -5,10 +5,14 @@
     align-items: center;
     font-size: 18px;
 
-    margin-top: 8rem; /*!!!!!!!!!!!!!!!!!!!!!*/
+    margin-top: 8rem; /*/!!!!!!!!!!!!!!!!!!!/*/
     /*border: 1px solid green;*/
 }
 
 .converter-btn {
-    height: 4.5em;
+}
+
+.converter-glyph{
+    font-size: 2em;
+    line-height: 1.3em;
 }
