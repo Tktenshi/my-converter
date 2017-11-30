@@ -1,7 +1,8 @@
 import {getItem} from "./LocalStorage";
+import {defaultLang} from "../consts/settingsConsts";
 
 export default function Lang(string) {
-    const lang = getItem("lang") || "ru";
+    const lang = getItem("lang") || defaultLang;
 
     const data = {
         "I have": {ru: "У меня есть", en: "I have"},

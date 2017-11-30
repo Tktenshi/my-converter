@@ -3,7 +3,7 @@ import Currency from "../containers/CurrencyContainer";
 import '../styles/converter.css';
 import {Button, Glyphicon} from "react-bootstrap";
 import Lang from "../utils/Lang";
-import {accuracyOfCalc, roundUnitVal, unitV} from "../consts/consts";
+import {accuracyOfCalc, roundUnitVal, unitV} from "../consts/settingsConsts";
 
 class Converter extends React.Component {
     constructor() {
@@ -46,7 +46,7 @@ class Converter extends React.Component {
                           unitVal={coeff && `${unitV} ${this.props.sourceCur} = ${+coeff.toFixed(roundUnitVal)} ${this.props.targetCur}`}
                           activeBtn={this.props.sourceCur}
                           setSourceValue={this.setSourceValue}/>
-                <Button bsStyle="info" bsSize="large" className="converter-btn" onClick={this.handlerClick}>
+                <Button bsStyle="info" bsSize="large" onClick={this.handlerClick}>
                     <Glyphicon glyph="transfer" className="converter-glyph"/>
                 </Button>
                 <Currency title={Lang("I want to buy")}

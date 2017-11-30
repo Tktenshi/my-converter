@@ -2,7 +2,7 @@ import React from 'react';
 import CurrencyBtnGroup from "./CurrencyBtnGroup";
 import {ControlLabel, InputGroup, FormControl} from "react-bootstrap";
 import '../styles/currency.css';
-import {initVal, maxValLen, roundUnitVal} from "../consts/consts";
+import {initVal, maxValLen, roundUnitVal} from "../consts/settingsConsts";
 
 class Currency extends React.Component {
     constructor(props) {

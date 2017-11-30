@@ -3,3 +3,4 @@ export const initVal = 1;
 export const roundUnitVal = 4;
 export const accuracyOfCalc = 10000;
 export const maxValLen = 9;
+export const defaultLang = "ru";
