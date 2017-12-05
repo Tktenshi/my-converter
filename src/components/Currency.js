@@ -59,7 +59,7 @@ class Currency extends React.Component {
                     <FormControl type="text" placeholder="" className="currency_input" value={this.state.value}
                                  onChange={this.handleChange}/>
                 </InputGroup>
-                <FormControl.Static> {this.props.unitVal}</FormControl.Static>
+                <FormControl.Static className="currency_unit-val"> {this.props.unitVal}</FormControl.Static>
             </div>
         )
     }

@@ -1,15 +1,53 @@
 .converter {
+    position: relative;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     font-size: 18px;
-
-    margin-top: 8rem; /*/!!!!!!!!!!!!!!!!!!!/*/
-    /*border: 1px solid green;*/
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 4em 0;
 }
 
-.converter-glyph{
+.converter_glyph {
     font-size: 2em;
     line-height: 1.3em;
+}
+
+.converter_btn-change-dir {
+
+}
+
+@media screen and (max-height: 700px) and (max-width: 700px), screen and (max-device-height: 700px) and (max-device-width: 700px) {
+    .converter_btn-change-dir {
+        margin: auto 10em;
+        padding: 0 16px;
+    }
+
+    .converter_glyph {
+        font-size: 1.7em;
+    }
+}
+
+@media screen and (max-height: 600px), screen and (max-device-height: 600px) {
+    .converter {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1200px), screen and (max-device-width: 1200px) {
+    .converter_btn-change-dir {
+        margin-top: 3.5em;
+    }
+}
+
+@media screen and (max-width: 700px), screen and (max-device-width: 700px) {
+    .converter {
+        padding: 0;
+    }
+
+    .converter_btn-change-dir {
+        margin: auto 10em;
+    }
 }

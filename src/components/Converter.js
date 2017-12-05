@@ -46,8 +46,8 @@ class Converter extends React.Component {
                           unitVal={coeff && `${unitV} ${this.props.sourceCur} = ${+coeff.toFixed(roundUnitVal)} ${this.props.targetCur}`}
                           activeBtn={this.props.sourceCur}
                           setSourceValue={this.setSourceValue}/>
-                <Button bsStyle="info" bsSize="large" onClick={this.handlerClick}>
-                    <Glyphicon glyph="transfer" className="converter-glyph"/>
+                <Button bsStyle="info" bsSize="large" className="converter_btn-change-dir" onClick={this.handlerClick}>
+                    <Glyphicon glyph="transfer" className="converter_glyph"/>
                 </Button>
                 <Currency title={Lang("I want to buy")}
                           unitVal={coeff && `${unitV} ${this.props.targetCur} = ${+(unitV / coeff).toFixed(roundUnitVal)} ${this.props.sourceCur}`}

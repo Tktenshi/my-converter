@@ -17,3 +17,15 @@
     font-weight: bold;
     padding: 1.1em 0.4em;
 }
+
+.currency_unit-val{
+    padding-bottom: 0;
+}
+
+@media screen and (max-height: 650px) and (max-width: 700px), screen and (max-device-height: 650px) and (max-device-width: 700px) {
+    .currency_input-cont .currency_input {
+        font-size: 1.9em;
+        font-weight: bold;
+        padding: 0.1em 0.4em;
+    }
+}

@@ -3,11 +3,12 @@ import {Navbar, NavDropdown, NavItem, Nav, MenuItem} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap"
 import {Link} from 'react-router-dom'
 import Lang from "../utils/Lang";
+import '../styles/header.css';
 
 class Header extends React.Component {
     render() {
         return (
-            <div>
+            <div className="header">
                 <Navbar inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>

@@ -34,3 +34,5 @@ export function requestCurrencies(currency) {
 export const sourceClick = createAction(SOURCE_CURRENCY_CHANGED);
 
 export const targetClick = createAction(TARGET_CURRENCY_CHANGED);
+
+export const changeDirClick = createAction(TARGET_CURRENCY_CHANGED);
