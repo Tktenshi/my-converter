@@ -1,5 +1,8 @@
-import { createAction} from 'redux-actions'
-import {CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED, TARGET_CURRENCY_CHANGED} from "../consts/actionTypeConsts";
+import {createAction} from 'redux-actions'
+import {
+    CHANGED_CURRENCY_DIRECTION, CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED,
+    TARGET_CURRENCY_CHANGED
+} from "../consts/actionTypeConsts";
 
 // export function btnCkicked(pl) {
 //     console.log("Action btn Clicked", pl);
@@ -21,7 +24,7 @@ export function requestCurrencies(currency) {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data);
+                console.log("ответ с сервера", data);
                 dispatch({
                     type: CURRENCIES_RESPONSE,
                     payload: data
@@ -35,4 +38,4 @@ export const sourceClick = createAction(SOURCE_CURRENCY_CHANGED);
 
 export const targetClick = createAction(TARGET_CURRENCY_CHANGED);
 
-export const changeDirClick = createAction(TARGET_CURRENCY_CHANGED);
+export const changeDirClick = createAction(CHANGED_CURRENCY_DIRECTION);

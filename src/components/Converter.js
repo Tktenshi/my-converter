@@ -31,10 +31,7 @@ class Converter extends React.Component {
 
     handlerClick = (evt) => {
         // [this.props.sourceCur, this.props.targetCur] = [this.props.targetCur, this.props.sourceCur];
-        let a = 5;
-        let b = 3;
-        [a, b] = [b, a];
-        console.log(a, b);
+        this.props.changeDirClick();
     };
 
     render() {

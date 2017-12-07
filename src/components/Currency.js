@@ -14,6 +14,7 @@ class Currency extends React.Component {
 
     componentDidMount() {
         if (!this.props.targetValue) {
+            console.log("отправляется запрос1");
             this.props.requestCurrencies(this.props.sourceCur);
             this.props.setSourceValue(this.state.value);
         }
@@ -22,6 +23,9 @@ class Currency extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (!!nextProps.targetValue) {
             this.setState({value: nextProps.targetValue});
+        } else if (nextProps.sourceCur !== this.props.sourceCur) {
+            console.log("отправляется запрос2");
+            this.props.requestCurrencies(nextProps.sourceCur);
         }
     }
 
@@ -40,7 +44,7 @@ class Currency extends React.Component {
     sourceClick = (evt) => {
         if (this.props.sourceCur !== evt.currentTarget.textContent) {
             this.props.sourceClick(evt.currentTarget.textContent);
-            this.props.requestCurrencies(evt.currentTarget.textContent);
+            // this.props.requestCurrencies(evt.currentTarget.textContent);
         }
         // this.props.setSourceValue(this.state.value)
     };

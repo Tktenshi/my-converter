@@ -8,8 +8,8 @@ import '../styles/header.css';
 class Header extends React.Component {
     render() {
         return (
-            <div className="header">
-                <Navbar inverse collapseOnSelect>
+            <div>
+                <Navbar className="header" inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
                             <Link to="/">{Lang("Currency converter")}</Link>

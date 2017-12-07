@@ -1,18 +1,16 @@
-#root{
-    width: 100%;
-}
-
-html, body{
+html, body, #root{
     height: 100%;
-    /*background: #136ebd url(../imgs/background-alt.svg) 50% 0 no-repeat;*/
-    background: #136ebd url(../imgs/background-alt.svg) center center no-repeat;
-    background-size: cover;
-    /*background-attachment: fixed;*/
 }
 
 body{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    background: #136ebd url(../imgs/background-alt.svg) center center no-repeat;
+    background-size: cover;
     color: black;
+}
+
+@media screen and (max-aspect-ratio: 10/9), screen and (max-device-aspect-ratio: 10/9) {
+    body{
+        background: #136ebd url(../imgs/background-alt.svg) center center;
+        background-size: 100%;
+    }
 }

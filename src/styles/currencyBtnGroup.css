@@ -3,3 +3,9 @@
     padding: 0.5em 0.85em;
     margin: 0.3em auto;
 }
+
+@media screen and (max-width: 825px), screen and (max-device-width: 825px) {
+    .currency-btn{
+        padding: 0.5em 0.45em;
+    }
+}

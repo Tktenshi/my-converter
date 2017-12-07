@@ -1,13 +1,14 @@
 .converter {
-    position: relative;
-    width: 100%;
+    width: 85%;
+    height: calc(100% - 2.87em);
+    max-width: 80em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     font-size: 18px;
     background-color: rgba(255, 255, 255, 0.4);
-    padding: 4em 0;
+    margin: auto;
 }
 
 .converter_glyph {
@@ -15,11 +16,35 @@
     line-height: 1.3em;
 }
 
-.converter_btn-change-dir {
-
+@media screen and (max-width: 1200px), screen and (max-device-width: 1200px) {
+    .converter_btn-change-dir {
+        margin-top: 3.5em;
+    }
 }
 
-@media screen and (max-height: 700px) and (max-width: 700px), screen and (max-device-height: 700px) and (max-device-width: 700px) {
+@media screen and (max-width: 825px), screen and (max-device-width: 825px) {
+    .converter_btn-change-dir {
+        padding: 10px 16px;
+    }
+
+    .converter_glyph {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 700px), screen and (max-device-width: 700px) {
+    .converter_btn-change-dir {
+        margin: auto 10em;
+    }
+}
+
+@media screen and (max-width: 400px), screen and (max-device-width: 400px) {
+    .converter {
+        width: 100%;
+    }
+}
+
+@media screen and (max-height: 650px) and (max-width: 700px), screen and (max-device-height: 650px) and (max-device-width: 700px) {
     .converter_btn-change-dir {
         margin: auto 10em;
         padding: 0 16px;
@@ -30,24 +55,15 @@
     }
 }
 
-@media screen and (max-height: 600px), screen and (max-device-height: 600px) {
+@media screen and (max-height: 534px) and (orientation: portrait), screen and (max-device-height: 534px) and (orientation: portrait) {
     .converter {
-        padding: 0;
+        height: auto;
     }
 }
 
-@media screen and (max-width: 1200px), screen and (max-device-width: 1200px) {
-    .converter_btn-change-dir {
-        margin-top: 3.5em;
-    }
-}
-
-@media screen and (max-width: 700px), screen and (max-device-width: 700px) {
+@media screen and (max-height: 323px) and (orientation: landscape), screen and (max-device-height: 323px) and (orientation: landscape) {
     .converter {
-        padding: 0;
-    }
-
-    .converter_btn-change-dir {
-        margin: auto 10em;
+        height: auto;
     }
 }
+
