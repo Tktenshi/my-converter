@@ -1,6 +1,6 @@
 import Converter from '../components/Converter'
 import {connect} from 'react-redux';
-import {changeDirClick} from "../actions/pageActions";
+import {swapCurrenciesClick} from "../actions/pageActions";
 // import {btnCkicked, requestCurrencies} from '../actions/pageActions';
 
 const mapStateToProps = (state) => {
@@ -14,8 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeDirClick: function () {
-            dispatch(changeDirClick())
+        swapCurrenciesClick: function () {
+            dispatch(swapCurrenciesClick())
         },
     };
 };

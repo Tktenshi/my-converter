@@ -12,6 +12,7 @@ export default function Lang(string) {
         "Settings": {ru: "Настройки", en: "Settings"},
         "History": {ru: "История", en: "History"},
         "About": {ru: "О программе", en: "About"},
+        "Swap Currencies": {ru: "Поменять валюты местами", en: "Swap Currencies"},
     };
 
     return data[string][lang] || string;

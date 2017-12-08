@@ -2,12 +2,13 @@ import {
     CHANGED_CURRENCY_DIRECTION, CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED,
     TARGET_CURRENCY_CHANGED
 } from "../consts/actionTypeConsts";
+import {defaultCurrencies} from "../consts/settingsConsts";
 
 const initionalState = {
     currencyData: null,
-    sourceCur: "EUR",
-    targetCur: "RUB",
-    defaultCurrencies: ["RUB", "EUR", "USD", "GBP"]
+    targetCur: defaultCurrencies[0],
+    sourceCur: defaultCurrencies[1],
+    defaultCurrencies: defaultCurrencies,
 };
 
 export function converterReducer(state = initionalState, action) {

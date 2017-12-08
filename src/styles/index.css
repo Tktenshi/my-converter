@@ -3,8 +3,9 @@ html, body, #root{
 }
 
 body{
-    background: #136ebd url(../imgs/background-alt.svg) center center no-repeat;
+    background: #136ebd url(../imgs/background-alt.svg) center center;
     background-size: cover;
+    /*background-size: contain;*/
     color: black;
 }
 

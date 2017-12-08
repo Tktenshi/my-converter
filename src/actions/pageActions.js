@@ -38,4 +38,4 @@ export const sourceClick = createAction(SOURCE_CURRENCY_CHANGED);
 
 export const targetClick = createAction(TARGET_CURRENCY_CHANGED);
 
-export const changeDirClick = createAction(CHANGED_CURRENCY_DIRECTION);
+export const swapCurrenciesClick = createAction(CHANGED_CURRENCY_DIRECTION);

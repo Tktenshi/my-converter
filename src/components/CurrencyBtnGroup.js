@@ -1,27 +1,43 @@
 import React from 'react';
 import {ButtonGroup, Button, DropdownButton, MenuItem} from "react-bootstrap";
 import '../styles/currencyBtnGroup.css';
+import allCur from "../utils/currenciesConsts";
 
 class CurrencyBtnGroup extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            allCur: allCur(),
+        };
+        console.log("!!!!!ВЫПОЛНИЛСЯ!!!!");
+    }
+
+    liClick = (evt) => {
+      // window.a = evt.target
+    };
+
     render() {
         return (
             <div>
                 <ButtonGroup>
                     {this.props.symbols.map((btn, i) => {
                         return (
-                            <Button key={i} onClick={this.props.handleClick} className="currency-btn"
+                            <Button key={i} title={this.state.allCur[btn]} onClick={this.props.btnClick}
+                                    className="currency-btn"
                                     bsStyle="primary" active={this.props.activeBtn === btn}>{btn}</Button>
                         )
                     })}
-                    <DropdownButton bsStyle="primary" className="currency-btn" title="" id="bg-nested-dropdown">
-                        {this.props.symbols.map((btn, i) => {
+                    <DropdownButton bsStyle="primary" className="currency-btn" title="" pullRight
+                                    id="bg-nested-dropdown">
+                        {Object.keys(this.state.allCur).map((cur, i) => {
                             return (
-                                <Button key={i} onClick={this.props.handleClick} className="currency-btn"
-                                        bsStyle="primary" active={this.props.activeBtn === btn}>{btn}</Button>
+                                <MenuItem key={i} onClick={this.liClick} /*className="currency-btn"
+                                        bsStyle="primary" *active={this.props.activeBtn === btn}*/>{cur}: {this.state.allCur[cur]}</MenuItem>
                             )
                         })}
-                        <MenuItem eventKey="1">Dropdown link 1</MenuItem>
-                        <MenuItem eventKey="2">Dropdown link 2</MenuItem>
+                        {/*{console.log("СЧИТАЛСЯ", this.state.allCur)}*/}
+                        {/*<MenuItem eventKey="1">Dropdown link 1</MenuItem>*/}
+                        {/*<MenuItem eventKey="2">Dropdown link 2</MenuItem>*/}
                     </DropdownButton>
                 </ButtonGroup>
             </div>

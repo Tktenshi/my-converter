@@ -29,9 +29,9 @@ class Converter extends React.Component {
         else return " "
     };
 
-    handlerClick = (evt) => {
+    swapCurrenciesClick = (evt) => {
         // [this.props.sourceCur, this.props.targetCur] = [this.props.targetCur, this.props.sourceCur];
-        this.props.changeDirClick();
+        this.props.swapCurrenciesClick();
     };
 
     render() {
@@ -43,7 +43,7 @@ class Converter extends React.Component {
                           unitVal={coeff && `${unitV} ${this.props.sourceCur} = ${+coeff.toFixed(roundUnitVal)} ${this.props.targetCur}`}
                           activeBtn={this.props.sourceCur}
                           setSourceValue={this.setSourceValue}/>
-                <Button bsStyle="info" bsSize="large" className="converter_btn-change-dir" onClick={this.handlerClick}>
+                <Button bsStyle="info" title={Lang("Swap Currencies")} bsSize="large" className="converter_btn-change-dir" onClick={this.swapCurrenciesClick}>
                     <Glyphicon glyph="transfer" className="converter_glyph"/>
                 </Button>
                 <Currency title={Lang("I want to buy")}

@@ -58,7 +58,7 @@ class Currency extends React.Component {
             <div className="currency">
                 <ControlLabel>{this.props.title}</ControlLabel>
                 <CurrencyBtnGroup symbols={this.props.defaultCurrencies} activeBtn={this.props.activeBtn}
-                                  handleClick={this.props.targetValue ? this.targetClick : this.sourceClick}/>
+                                  btnClick={this.props.targetValue ? this.targetClick : this.sourceClick}/>
                 <InputGroup bsSize="large" className="currency_input-cont">
                     <FormControl type="text" placeholder="" className="currency_input" value={this.state.value}
                                  onChange={this.handleChange}/>
