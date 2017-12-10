@@ -22,7 +22,7 @@ class Converter extends React.Component {
     };
 
     getTargetValue = (coeff) => {
-        if (this.props.currencyData && this.state.sourceValue && (coeff || coeff === 0)) {
+        if (this.props.currencyData && this.state.sourceValue && !isNaN(this.state.sourceValue) && (coeff || coeff === 0)) {
             // return this.state.sourceValue * coeff;
             return Math.round(this.state.sourceValue * accuracyOfCalc * coeff.toFixed(roundUnitVal)) / accuracyOfCalc
         }
@@ -36,20 +36,21 @@ class Converter extends React.Component {
 
     render() {
         console.log("Контейнер рендерится");
-        const coeff = this.props.targetCur === this.props.sourceCur ? unitV : this.props.currencyData && this.props.currencyData.rates[this.props.targetCur];
+        const coeff = this.props.targetCur === this.props.sourceCur ? unitV : this.props.currencyData && this.props.currencyData.rates && this.props.currencyData.rates[this.props.targetCur];
         return (
             <div className="converter">
                 <Currency title={Lang("I have")}
                           unitVal={coeff && `${unitV} ${this.props.sourceCur} = ${+coeff.toFixed(roundUnitVal)} ${this.props.targetCur}`}
                           activeBtn={this.props.sourceCur}
                           setSourceValue={this.setSourceValue}/>
-                <Button bsStyle="info" title={Lang("Swap Currencies")} bsSize="large" className="converter_btn-change-dir" onClick={this.swapCurrenciesClick}>
+                <Button bsStyle="info" title={Lang("Swap Currencies")} bsSize="large"
+                        className="converter_btn-change-dir" onClick={this.swapCurrenciesClick}>
                     <Glyphicon glyph="transfer" className="converter_glyph"/>
                 </Button>
                 <Currency title={Lang("I want to buy")}
                           unitVal={coeff && `${unitV} ${this.props.targetCur} = ${+(unitV / coeff).toFixed(roundUnitVal)} ${this.props.sourceCur}`}
                           activeBtn={this.props.targetCur}
-                          targetValue={this.getTargetValue(coeff)}/>
+                          targetValue={this.getTargetValue(coeff).toString()}/>
             </div>
         )
     }

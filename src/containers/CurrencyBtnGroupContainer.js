@@ -1,17 +1,16 @@
-import Currency from '../components/Currency'
+import CurrencyBtnGroup from '../components/CurrencyBtnGroup'
 import {connect} from 'react-redux';
-import {sourceClick, targetClick, requestCurrencies} from "../actions/pageActions"
 
 const mapStateToProps = (state) => {
     return {
-        defaultCurrencies: state.converterRed.defaultCurrencies,
+        // defaultCurrencies: state.converterRed.defaultCurrencies,
         sourceCur: state.converterRed.sourceCur,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sourceClick: function (currencyName) {
+       /* sourceClick: function (currencyName) {
             dispatch(sourceClick(currencyName))
         },
         targetClick: function (currencyName) {
@@ -20,8 +19,8 @@ const mapDispatchToProps = (dispatch) => {
         requestCurrencies: function (currencyName) {
             // console.log("Container dispatch requestCurrencies");
             dispatch(requestCurrencies(currencyName))
-        }
+        }*/
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Currency);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencyBtnGroup);

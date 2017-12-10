@@ -1,7 +1,7 @@
 import React from 'react';
 import {ButtonGroup, Button, DropdownButton, MenuItem} from "react-bootstrap";
 import '../styles/currencyBtnGroup.css';
-import allCur from "../utils/currenciesConsts";
+import allCur from "../utils/currenciesCodes";
 
 class CurrencyBtnGroup extends React.Component {
     constructor() {
@@ -9,12 +9,8 @@ class CurrencyBtnGroup extends React.Component {
         this.state = {
             allCur: allCur(),
         };
-        console.log("!!!!!ВЫПОЛНИЛСЯ!!!!");
+        // console.log("!!!!!ВЫПОЛНИЛСЯ!!!!");
     }
-
-    liClick = (evt) => {
-      // window.a = evt.target
-    };
 
     render() {
         return (
@@ -31,8 +27,8 @@ class CurrencyBtnGroup extends React.Component {
                                     id="bg-nested-dropdown">
                         {Object.keys(this.state.allCur).map((cur, i) => {
                             return (
-                                <MenuItem key={i} onClick={this.liClick} /*className="currency-btn"
-                                        bsStyle="primary" *active={this.props.activeBtn === btn}*/>{cur}: {this.state.allCur[cur]}</MenuItem>
+                                <MenuItem key={i} onClick={this.props.btnClick} /*className="currency-btn"
+                                        bsStyle="primary"*/ active={this.props.activeBtn === cur}>{cur}: {this.state.allCur[cur]}</MenuItem>
                             )
                         })}
                         {/*{console.log("СЧИТАЛСЯ", this.state.allCur)}*/}

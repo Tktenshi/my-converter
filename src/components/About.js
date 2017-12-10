@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/about.css';
-import {getLength} from "../utils/currenciesConsts";
+import {getLength} from "../utils/currenciesCodes";
 
 const About = () =>
     <div className = "about">
