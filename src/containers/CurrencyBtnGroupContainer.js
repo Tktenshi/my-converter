@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
     return {
-        // defaultCurrencies: state.converterRed.defaultCurrencies,
         sourceCur: state.converterRed.sourceCur,
     };
 };

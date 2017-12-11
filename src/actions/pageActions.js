@@ -29,13 +29,17 @@ export function requestCurrencies(currency) {
             })
             .then(function (data) {
                 console.log("ответ с сервера", data);
-                if (data.error) throw new ApiError({errText: data.error});
                 dispatch({
                     type: CURRENCIES_RESPONSE,
                     payload: data
                 });
+                if (data.error) throw new ApiError({errText: data.error});
             })
             .catch(function (err) {
+                dispatch({
+                    type: CURRENCIES_RESPONSE,
+                    payload: null
+                });
                 if (err.name === "ApiError") {
                     const status = err.status;
                     const errText = err.errText;

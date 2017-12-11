@@ -3,6 +3,7 @@ import Currency from "../containers/CurrencyContainer";
 import '../styles/converter.css';
 import {Button, Glyphicon} from "react-bootstrap";
 import Lang from "../utils/Lang";
+import LangErr from "../utils/LangErr";
 import {accuracyOfCalc, roundUnitVal, unitV} from "../consts/settingsConsts";
 
 class Converter extends React.Component {
@@ -10,11 +11,12 @@ class Converter extends React.Component {
         super();
         this.state = {
             sourceValue: null,
-        };
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return this.props.currencyData !== nextProps.currencyData || this.props.targetCur !== nextProps.targetCur || nextState !== this.state;
+        return true;
+        // return this.props.currencyData !== nextProps.currencyData || this.props.targetCur !== nextProps.targetCur || nextState !== this.state;
     }
 
     setSourceValue = (sourceValue) => {
@@ -37,6 +39,8 @@ class Converter extends React.Component {
     render() {
         console.log("Контейнер рендерится");
         const coeff = this.props.targetCur === this.props.sourceCur ? unitV : this.props.currencyData && this.props.currencyData.rates && this.props.currencyData.rates[this.props.targetCur];
+        console.log("coeff", coeff);
+        // if (coeff === undefined) alert(`${LangErr("Other")} ${LangErr("Send")}`);
         return (
             <div className="converter">
                 <Currency title={Lang("I have")}

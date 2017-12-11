@@ -1,3 +1,8 @@
 .header{
     margin-bottom: 0;
 }
+
+.header_menu-item-img{
+    height: 2em;
+    margin-top: -0.2em;
+}

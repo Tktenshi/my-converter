@@ -1,0 +1,37 @@
+.settings {
+    width: 85%;
+    height: calc(86% - 2.87em);
+    max-width: 70em;
+    min-height: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.4em;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: auto;
+}
+
+.settings_currencies {
+    margin-top: 1.2em;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: space-around;
+    width: 100%;
+}
+
+.settings_currencies .settings-currencies_checkbox {
+    margin: 0.7em 0;
+    padding: 0;
+}
+
+@media screen and (max-height: 920px), screen and (max-device-height: 920px) {
+    .settings_currencies .settings-currencies_checkbox {
+        margin: 0.5em 0;
+    }
+}
+
+@media screen and (max-height: 820px), screen and (max-device-height: 820px) {
+    .settings_currencies .settings-currencies_checkbox {
+        margin: 0.3em 0;
+    }
+}

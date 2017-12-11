@@ -1,5 +1,5 @@
 import {getItem} from "./LocalStorage";
-import {defaultLang} from "../consts/settingsConsts";
+import {defaultLang, langLS} from "../consts/settingsConsts";
 
 const data = {
     RUB: {ru: "Российский рубль", en: "Russian ruble",},
@@ -38,7 +38,7 @@ const data = {
 };
 
 export default function allCur() {
-    const lang = getItem("lang") || defaultLang;
+    const lang = getItem(langLS) || defaultLang;
     const allCur = {};
     for (let key in data) {
         if (data.hasOwnProperty(key)) {
@@ -50,15 +50,7 @@ export default function allCur() {
 }
 
 export function allCurCodes(num = getLength()) {
-    const allCurCodes = [];
-    let i = 1;
-    for (let key in data) {
-        if (data.hasOwnProperty(key)) {
-            allCurCodes.push(key);
-        }
-        if (i++ >= num) return allCurCodes;
-    }
-    return allCurCodes;
+    return Object.keys(data).filter((key, i) => i < num)
 }
 
 export function getLength() {
@@ -66,6 +58,6 @@ export function getLength() {
 }
 
 export function CurTitle(cur) {
-    const lang = getItem("lang") || defaultLang;
+    const lang = getItem(langLS) || defaultLang;
     return data[cur][lang] || cur;
 }

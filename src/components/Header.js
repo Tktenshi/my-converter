@@ -4,8 +4,25 @@ import {LinkContainer} from "react-router-bootstrap"
 import {Link} from 'react-router-dom'
 import Lang from "../utils/Lang";
 import '../styles/header.css';
+import {defaultLang, langLS, langs} from "../consts/settingsConsts";
+import {getItem, setItem} from "../utils/LocalStorage";
 
 class Header extends React.Component {
+    constructor() {
+        super();
+        this.curLangId = getItem(langLS) || defaultLang;
+    }
+
+    changeLangSelect = (key) => {
+        console.log("!!", langs[key].id, this.curLangId);
+
+        if (langs[key].id !== this.curLangId) {
+            setItem(langLS, langs[key].id);
+            this.curLangId = langs[key].id;
+            this.props.changeLang(langs[key].id);
+        }
+    };
+
     render() {
         return (
             <div>
@@ -19,21 +36,29 @@ class Header extends React.Component {
                     <Navbar.Collapse>
                         <Nav>
                             <LinkContainer exact to="/">
-                                <NavItem eventKey={1}>{Lang("Converter")}</NavItem>
+                                <NavItem>{Lang("Converter")}</NavItem>
                             </LinkContainer>
-                            <NavItem eventKey={2} href="#">{Lang("Settings")}</NavItem>
-                            <NavDropdown eventKey={3} title={Lang("History")} id="basic-nav-dropdown">
-                                <MenuItem eventKey={3.1}>Очистить историю</MenuItem>
-                                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                                <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                                <MenuItem divider/>
-                                <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                            </NavDropdown>
+                            <LinkContainer to="/settings">
+                                <NavItem>{Lang("Settings")}</NavItem>
+                            </LinkContainer>
+                            <NavItem href="#">{Lang("History")}</NavItem>
                         </Nav>
                         <Nav pullRight>
                             <LinkContainer to="/about">
-                                <NavItem eventKey={1}>{Lang("About")}</NavItem>
+                                <NavItem>{Lang("About")}</NavItem>
                             </LinkContainer>
+                            <NavDropdown title={Lang("lang")} id="">
+                                {langs.map((lang, i) => {
+                                    return (
+                                        <MenuItem key={i} eventKey={i} onSelect={this.changeLangSelect}
+                                                  className={lang.id === (getItem(langLS) || defaultLang) && "active"}>
+                                            <img className="header_menu-item-img" src={require(`../${lang.flag}`)}
+                                                 alt={lang.id + ":"}/> {lang.name}
+                                        </MenuItem>
+                                    )
+                                })}
+                                {/*<MenuItem divider/>*/}
+                            </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
