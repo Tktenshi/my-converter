@@ -1,15 +1,20 @@
 import {
-    CHANGED_CURRENCY_DIRECTION, CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED,
+    CHANGED_CURRENCY_DIRECTION, CHANGED_QUICK_CURRENCY_LIST, CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED,
     TARGET_CURRENCY_CHANGED
 } from "../consts/actionTypeConsts";
-import {curLS, defaultCurrencies} from "../consts/settingsConsts";
-import {getItem} from "../utils/LocalStorage";
+import getQuickAccessCur from "../utils/SetQuickAccessCur";
+// import {curLS, defaultCurrencies} from "../consts/settingsConsts";
+// import {getItem} from "../utils/LocalStorage";
+
+const quickAccessCur = getQuickAccessCur();
 
 const initionalState = {
     currencyData: null,
-    targetCur: defaultCurrencies[0],
-    sourceCur: defaultCurrencies[1],
-    quickAccessCur: getItem(curLS) || defaultCurrencies,
+    quickAccessCur: quickAccessCur,
+    targetCur: quickAccessCur[0],
+    sourceCur: quickAccessCur[1],
+    // sourceCur: defaultCurrencies[1],
+    // quickAccessCur: getItem(curLS) || defaultCurrencies,
 };
 
 export function converterReducer(state = initionalState, action) {
@@ -34,6 +39,13 @@ export function converterReducer(state = initionalState, action) {
                 ...state,
                 targetCur: state.sourceCur,
                 sourceCur : state.targetCur,
+            };
+        case CHANGED_QUICK_CURRENCY_LIST:
+            return {
+                ...state,
+                quickAccessCur: action.payload,
+                targetCur: action.payload[0],
+                sourceCur : action.payload[1],
             };
 
         default:

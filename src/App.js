@@ -5,7 +5,7 @@ import './styles/app.css';
 import Header from "./components/Header";
 import Converter from "./containers/ConverterContainer";
 import About from "./components/About";
-import Settings from "./components/Settings";
+import Settings from "./containers/SettingsContainer";
 import {getItem} from "./utils/LocalStorage";
 import {defaultLang, langLS} from "./consts/settingsConsts";
 

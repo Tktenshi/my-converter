@@ -1,11 +1,14 @@
 import {createAction} from 'redux-actions'
 import {
-    CHANGED_CURRENCY_DIRECTION, CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED,
+    CHANGED_CURRENCY_DIRECTION, CHANGED_QUICK_CURRENCY_LIST, CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED,
     TARGET_CURRENCY_CHANGED
 } from "../consts/actionTypeConsts";
 import ApiError from "../utils/ApiExeption";
 import LangErr from "../utils/LangErr";
-import Alert from "../components/Alert";
+// import Alert from "../components/Alert";
+// import {getItem} from "../utils/LocalStorage";
+// import {curLS, defaultCurrencies} from "../consts/settingsConsts";
+// import getQuickAccessCur from "../utils/getQuickAccessCur";
 
 export function requestCurrencies(currency) {
     // console.log(currency);
@@ -55,8 +58,20 @@ export function requestCurrencies(currency) {
     }
 }
 
+// export function changeQuickAccessCur() {
+//     console.log("changeQuickAccessCur");
+//     const quickAccessCur = getQuickAccessCur();
+//
+//     return {
+//         type: CHANGED_QUICK_CURRENCY_LIST,
+//         payload: quickAccessCur
+//     };
+// }
+
 export const sourceClick = createAction(SOURCE_CURRENCY_CHANGED);
 
 export const targetClick = createAction(TARGET_CURRENCY_CHANGED);
 
 export const swapCurrenciesClick = createAction(CHANGED_CURRENCY_DIRECTION);
+
+export const changeQuickAccessCur = createAction(CHANGED_QUICK_CURRENCY_LIST);

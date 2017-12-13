@@ -3,40 +3,76 @@ import {FormGroup, Checkbox, FormControl} from "react-bootstrap";
 import '../styles/settings.css';
 import getAllCur from "../utils/currenciesCodes";
 import Lang from "../utils/Lang";
-import {getItem} from "../utils/LocalStorage";
-import {curLS, defaultCurrencies} from "../consts/settingsConsts";
+import {getItem, removeItem, setItem} from "../utils/LocalStorage";
+import {curLS, defaultCurrencies, numDafaultCur} from "../consts/settingsConsts";
+import SetQuickAccessCur from "../utils/SetQuickAccessCur";
 
 
 class Settings extends React.Component {
     constructor() {
         super();
+        const currencies = getItem(curLS) || defaultCurrencies;
         this.state = {
             allCur: getAllCur(),
-            currencies: getItem(curLS) || defaultCurrencies,
+            numOfCur: currencies.length,
         };
+        this.state.checkedList = this.isDefault(currencies);
     }
 
+    isDefault = (currencies) => {
+        const obj = {};
+        Object.keys(this.state.allCur).forEach((cur, i) => {
+            obj[cur] = !!currencies.some(function (name) {
+                return name === cur;
+            })
+        });
+        return obj;
+        // return Object.keys(this.state.allCur).map((cur, i) => {
+        //     return !!currencies.some(function (name) {
+        //         return name === cur;
+        //     })
+        // });
+        // return !!this.currencies.some(function (name) {
+        //     return name === cur;
+        // })
+    };
+
     componentWillReceiveProps(nextProps) {
-        console.log("nextPropsSettings", nextProps);
         if (this.state.allCur !== getAllCur()) {
-            console.log("попали");
+            console.log("попали в componentWillReceiveProps");
             this.setState({allCur: getAllCur()});
         }
     }
 
-    isDefault = (cur) => {
-        return !!this.state.currencies.filter(function (name) {
-            return name === cur;
-        }).length > 0;
+    handleInputChange = (evt) => {
+        const el = evt.target;
+
+        this.setState({
+            checkedList: {...this.state.checkedList, [el.name]: el.checked},
+            numOfCur: this.state.numOfCur + ((el.checked && 1) || -1)
+        });
     };
 
-    componentWillUnmount(){
+    componentWillUnmount() {
+        const quickAccessCur = Object.keys(this.state.checkedList).filter((key, i) => {
+            return this.state.checkedList[key];
+            // obj[cur] = !!currencies.some(function (name) {
+            //     return name === cur;
+            // })
+        });
+        // setItem();
+        console.log("quickAccessCur", quickAccessCur);
+        if (quickAccessCur.length === 0)
+            removeItem(curLS);
+        else setItem(curLS, quickAccessCur);
+
         console.log("убивают!");
+        this.props.changeQuickAccessCur(SetQuickAccessCur())
     }
 
     render() {
         console.log("Settings рендерится");
-        console.log("this.currencies", this.state.currencies);
+        const isDis = this.state.numOfCur === numDafaultCur;
         return (
             <div className="settings">
                 <h1 className="settings_h1">{Lang("Settings")}</h1>
@@ -44,8 +80,10 @@ class Settings extends React.Component {
                     которые будут отображаться в строке быстрого доступа конвертора</FormControl.Static>
                 <FormGroup className="settings_currencies">
                     {Object.keys(this.state.allCur).map((cur, i) => {
+                        const checked = this.state.checkedList[cur];
                         return (
-                            <Checkbox key={i} className="settings-currencies_checkbox" checked={this.isDefault(cur)}
+                            <Checkbox key={i} value={i} name={cur} className="settings-currencies_checkbox"
+                                      checked={checked} disabled={isDis && !checked} onChange={this.handleInputChange}
                                 /*onClick={this.props.btnClick} bsStyle="primary" active={this.props.activeBtn === cur}*/>{cur}: {this.state.allCur[cur]}</Checkbox>
                         )
                     })}
