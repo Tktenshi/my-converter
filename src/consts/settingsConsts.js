@@ -14,3 +14,4 @@ export const langs = [
 ];
 export const defaultLang = langs[0].id;
 export const langLS = "lang";  //"lang" - item in Local Storage
+export const curLS = "quick-access-cur";  //"quick-access-cur" - item in Local Storage

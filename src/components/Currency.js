@@ -10,6 +10,7 @@ class Currency extends React.Component {
         this.state = {
             value: this.props.targetValue || initVal
         };
+        // console.log("я родился");
     }
 
     componentDidMount() {
@@ -43,7 +44,7 @@ class Currency extends React.Component {
 
     sourceClick = (evt) => {
         const tc = evt.currentTarget.textContent.substr(0, numCharCur);
-        console.log(tc);
+        // console.log(tc);
         if (this.props.sourceCur !== tc) {
             this.props.sourceClick(tc);
             // this.props.requestCurrencies(evt.currentTarget.textContent);
@@ -59,7 +60,7 @@ class Currency extends React.Component {
         return (
             <div className="currency">
                 <ControlLabel>{this.props.title}</ControlLabel>
-                <CurrencyBtnGroup symbols={this.props.defaultCurrencies} activeBtn={this.props.activeBtn}
+                <CurrencyBtnGroup /*symbols={this.props.quickAccessCur}*/ activeBtn={this.props.activeBtn}
                                   btnClick={this.props.targetValue ? this.targetClick : this.sourceClick}/>
                 <InputGroup bsSize="large" className="currency_input-cont">
                     <FormControl type="text" placeholder="" className="currency_input" value={this.state.value}

@@ -1,40 +1,42 @@
 import React from 'react';
 import {ButtonGroup, Button, DropdownButton, MenuItem} from "react-bootstrap";
 import '../styles/currencyBtnGroup.css';
-import allCur from "../utils/currenciesCodes";
+import getAllCur from "../utils/currenciesCodes";
 
 
 class CurrencyBtnGroup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCurr: allCur()
+            allCur: getAllCur()
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("nextProps!!!!!", nextProps);
-        this.setState({allCur: allCur()});
+        // console.log("nextProps!!!!!", nextProps);
+        // console.log("getAllCur()!!!!!", getAllCur());
+        this.setState({allCur: getAllCur()});
+        // console.log("this.state.allCurr!!!!!", this.state.allCurr);
     }
 
     render() {
         return (
             <div>
                 <ButtonGroup>
-                    {this.props.symbols.map((btn, i) => {
+                    {this.props.quickAccessCur.map((btn, i) => {
                         return (
-                            <Button key={i} title={this.state.allCurr[btn]} onClick={this.props.btnClick}
+                            <Button key={i} title={this.state.allCur[btn]} onClick={this.props.btnClick}
                                     className="currency-btn"
                                     bsStyle="primary" active={this.props.activeBtn === btn}>{btn}</Button>
                         )
                     })}
                     <DropdownButton bsStyle="primary" className="currency-btn" title="" pullRight
                                     id="bg-nested-dropdown">
-                        {Object.keys(this.state.allCurr).map((cur, i) => {
+                        {Object.keys(this.state.allCur).map((cur, i) => {
                             return (
                                 <MenuItem key={i} onClick={this.props.btnClick} /*className="currency-btn"
                                         bsStyle="primary"*/
-                                          active={this.props.activeBtn === cur}>{cur}: {this.state.allCurr[cur]}</MenuItem>
+                                          active={this.props.activeBtn === cur}>{cur}: {this.state.allCur[cur]}</MenuItem>
                             )
                         })}
                     </DropdownButton>

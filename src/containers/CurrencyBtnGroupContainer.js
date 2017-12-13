@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 const mapStateToProps = (state) => {
     return {
         sourceCur: state.converterRed.sourceCur,
+        quickAccessCur: state.converterRed.quickAccessCur,
     };
 };
 

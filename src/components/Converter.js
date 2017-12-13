@@ -3,7 +3,7 @@ import Currency from "../containers/CurrencyContainer";
 import '../styles/converter.css';
 import {Button, Glyphicon} from "react-bootstrap";
 import Lang from "../utils/Lang";
-import LangErr from "../utils/LangErr";
+// import LangErr from "../utils/LangErr";
 import {accuracyOfCalc, roundUnitVal, unitV} from "../consts/settingsConsts";
 
 class Converter extends React.Component {
@@ -15,9 +15,8 @@ class Converter extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return true;
-        // return this.props.currencyData !== nextProps.currencyData || this.props.targetCur !== nextProps.targetCur || nextState !== this.state;
-    }
+        return !(this.props.targetCur !== nextProps.targetCur && this.props.sourceCur !== nextProps.sourceCur)
+    };
 
     setSourceValue = (sourceValue) => {
         this.setState({sourceValue});
@@ -39,12 +38,12 @@ class Converter extends React.Component {
     render() {
         console.log("Контейнер рендерится");
         const coeff = this.props.targetCur === this.props.sourceCur ? unitV : this.props.currencyData && this.props.currencyData.rates && this.props.currencyData.rates[this.props.targetCur];
-        console.log("coeff", coeff);
+        // console.log("coeff", coeff);
         // if (coeff === undefined) alert(`${LangErr("Other")} ${LangErr("Send")}`);
         return (
             <div className="converter">
                 <Currency title={Lang("I have")}
-                          unitVal={coeff && `${unitV} ${this.props.sourceCur} = ${+coeff.toFixed(roundUnitVal)} ${this.props.targetCur}`}
+                          unitVal={(coeff && `${unitV} ${this.props.sourceCur} = ${+coeff.toFixed(roundUnitVal)} ${this.props.targetCur}`) || Lang("No Information")}
                           activeBtn={this.props.sourceCur}
                           setSourceValue={this.setSourceValue}/>
                 <Button bsStyle="info" title={Lang("Swap Currencies")} bsSize="large"
@@ -52,7 +51,7 @@ class Converter extends React.Component {
                     <Glyphicon glyph="transfer" className="converter_glyph"/>
                 </Button>
                 <Currency title={Lang("I want to buy")}
-                          unitVal={coeff && `${unitV} ${this.props.targetCur} = ${+(unitV / coeff).toFixed(roundUnitVal)} ${this.props.sourceCur}`}
+                          unitVal={(coeff && `${unitV} ${this.props.targetCur} = ${+(unitV / coeff).toFixed(roundUnitVal)} ${this.props.sourceCur}`) || Lang("No Information")}
                           activeBtn={this.props.targetCur}
                           targetValue={this.getTargetValue(coeff).toString()}/>
             </div>

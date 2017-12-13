@@ -9,10 +9,19 @@
     font-size: 1.4em;
     background-color: rgba(255, 255, 255, 0.4);
     margin: auto;
+    padding: 0 0.3em;
+}
+
+.form-control-static {
+    min-height: auto;
+}
+
+.settings_text {
+    text-align: center;
 }
 
 .settings_currencies {
-    margin-top: 1.2em;
+    /*margin-top: 0.7em;*/
     display: grid;
     grid-template-columns: repeat(3, max-content);
     justify-content: space-around;
@@ -24,6 +33,10 @@
     padding: 0;
 }
 
+.settings-currencies_checkbox > label {
+    line-height: 1em;
+}
+
 @media screen and (max-height: 920px), screen and (max-device-height: 920px) {
     .settings_currencies .settings-currencies_checkbox {
         margin: 0.5em 0;
@@ -33,5 +46,44 @@
 @media screen and (max-height: 820px), screen and (max-device-height: 820px) {
     .settings_currencies .settings-currencies_checkbox {
         margin: 0.3em 0;
+    }
+}
+
+@media screen and (max-width: 1050px), screen and (max-device-width: 1050px) {
+    .settings_currencies {
+        grid-template-columns: repeat(2, max-content);
+    }
+
+    .settings {
+        height: auto;
+    }
+
+    .settings_currencies .settings-currencies_checkbox {
+        margin: 0.3em 0;
+    }
+
+    .settings_h1 {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) {
+    .settings{
+        font-size: 1.2em;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 630px), screen and (max-device-width: 630px) {
+    .settings{
+        font-size: 1.2em;
+    }
+
+    .settings_h1 {
+        margin-top: 0.1em;
+    }
+
+    .settings_currencies {
+        grid-template-columns: repeat(1, max-content);
     }
 }

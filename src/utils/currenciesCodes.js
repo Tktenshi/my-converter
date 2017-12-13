@@ -37,12 +37,12 @@ const data = {
     OOO: {ru: "Тест", en: "Test",},
 };
 
-export default function allCur() {
+export default function getAllCur() {
     const lang = getItem(langLS) || defaultLang;
     const allCur = {};
     for (let key in data) {
         if (data.hasOwnProperty(key)) {
-            // allCur.push([key, data[key][lang]]);
+            // getAllCur.push([key, data[key][lang]]);
             allCur[key] = data[key][lang];
         }
     }

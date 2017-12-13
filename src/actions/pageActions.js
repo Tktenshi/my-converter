@@ -7,15 +7,6 @@ import ApiError from "../utils/ApiExeption";
 import LangErr from "../utils/LangErr";
 import Alert from "../components/Alert";
 
-// export function btnCkicked(pl) {
-//     console.log("Action btn Clicked", pl);
-//
-//     return {
-//         type: 'BUTTON_CLICKED',
-//         payload: pl
-//     };
-// }
-
 export function requestCurrencies(currency) {
     // console.log(currency);
     return function (dispatch) {

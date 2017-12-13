@@ -4,7 +4,7 @@ import {sourceClick, targetClick, requestCurrencies} from "../actions/pageAction
 
 const mapStateToProps = (state) => {
     return {
-        defaultCurrencies: state.converterRed.defaultCurrencies,
+        // quickAccessCur: state.converterRed.quickAccessCur,
         sourceCur: state.converterRed.sourceCur,
     };
 };
