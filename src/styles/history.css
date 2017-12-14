@@ -1,0 +1,66 @@
+.history {
+    display: flex;
+    max-width: 70em;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 3em;
+    width: 80%;
+    min-height: calc(100% - 2.87em);
+    font-size: 1.3em;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: auto;
+}
+
+.history_table {
+    text-align: center;
+    margin: 0.6em 0 0;
+}
+
+.history_table-head th {
+    text-align: center;
+    background-color: #04519b;
+    color: white;
+}
+
+.history_table > tbody > tr:nth-of-type(2n) {
+    background-color: RGBA(19, 110, 189, 0.3);
+}
+
+.history_table > tbody > tr:hover {
+    /*background-color: RGBA(9,100,179,0.55);*/
+    background-color: RGBA(34, 111, 185, 1);
+}
+
+@media screen and (max-width: 640px), screen and (max-device-width: 640px) {
+    .history {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 570px), screen and (max-device-width: 570px) {
+    .history {
+        width: auto;
+        padding: 0 1em;
+        overflow-x: auto;
+    }
+}
+
+@media screen and (max-width: 515px), screen and (max-device-width: 515px) {
+    .history_table-td-value {
+        max-width: 4em;
+        word-wrap: break-word;
+    }
+}
+
+@media screen and (max-width: 425px), screen and (max-device-width: 425px) {
+    .history {
+        font-size: 1.2em;
+    }
+
+    .history_table td {
+        padding: 3px !important;
+         vertical-align: middle;
+    }
+}
+
+

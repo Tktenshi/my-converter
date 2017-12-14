@@ -14,8 +14,6 @@ class Header extends React.Component {
     }
 
     changeLangSelect = (key) => {
-        console.log("!!", langs[key].id, this.curLangId);
-
         if (langs[key].id !== this.curLangId) {
             setItem(langLS, langs[key].id);
             this.curLangId = langs[key].id;
@@ -41,7 +39,9 @@ class Header extends React.Component {
                             <LinkContainer to="/settings">
                                 <NavItem>{Lang("Settings")}</NavItem>
                             </LinkContainer>
-                            <NavItem href="#">{Lang("History")}</NavItem>
+                            <LinkContainer to="/history">
+                                <NavItem>{Lang("History")}</NavItem>
+                            </LinkContainer>
                         </Nav>
                         <Nav pullRight>
                             <LinkContainer to="/about">

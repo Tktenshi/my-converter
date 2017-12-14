@@ -1,28 +1,22 @@
 import React, {Component} from 'react'
-import AlertContainer from 'react-alert'
+import SweetAlert from 'react-bootstrap-sweetalert'
 
 export default class Alert extends Component {
     alertOptions = {
-        offset: 14,
-        position: 'top left',
-        theme: 'dark',
-        time: 5000,
-        transition: 'fade'
+        type: "danger",
+        title: "",
     };
 
-    showAlert = () => {
-        this.msg.show('Some text or component', {
-            // time: 2000,
-            type: 'success',
-            // icon: <img src="path/to/some/img/32x32.png" />
-        })
+    hideAlert = () => {
+        this.props.hideAlert();
     };
 
     render() {
         return (
             <div>
-                <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-                <button onClick={this.showAlert}>Show Alert</button>
+                <SweetAlert className="sweet-alert" show={!!this.props.textAlert} {...this.alertOptions}
+                            onConfirm={this.hideAlert}> {this.props.textAlert}
+                </SweetAlert>
             </div>
         )
     }

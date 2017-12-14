@@ -5,6 +5,7 @@ import './styles/app.css';
 import Header from "./components/Header";
 import Converter from "./containers/ConverterContainer";
 import About from "./components/About";
+import History from "./components/History";
 import Settings from "./containers/SettingsContainer";
 import {getItem} from "./utils/LocalStorage";
 import {defaultLang, langLS} from "./consts/settingsConsts";
@@ -18,7 +19,6 @@ class App extends React.Component {
     }
 
     changeLang = (lang) => {
-        console.log("props", this.props);
         this.setState({lang});
     };
 
@@ -30,6 +30,7 @@ class App extends React.Component {
                     <Route exact path="/" component={Converter}/>
                     <Route path="/about" component={About}/>
                     <Route path="/settings" component={Settings}/>
+                    <Route path="/history" component={History}/>
                 </div>
             </BrowserRouter>
         )

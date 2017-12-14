@@ -13,10 +13,7 @@ class CurrencyBtnGroup extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log("nextProps!!!!!", nextProps);
-        // console.log("getAllCur()!!!!!", getAllCur());
         this.setState({allCur: getAllCur()});
-        // console.log("this.state.allCurr!!!!!", this.state.allCurr);
     }
 
     render() {
@@ -26,17 +23,18 @@ class CurrencyBtnGroup extends React.Component {
                     {this.props.quickAccessCur.map((btn, i) => {
                         return (
                             <Button key={i} title={this.state.allCur[btn]} onClick={this.props.btnClick}
-                                    className="currency-btn"
-                                    bsStyle="primary" active={this.props.activeBtn === btn}>{btn}</Button>
+                                    className="currency-btn" bsStyle="primary"
+                                    active={this.props.activeBtn === btn}>{btn}
+                            </Button>
                         )
                     })}
-                    <DropdownButton bsStyle="primary" className="currency-btn" title="" pullRight
+                    <DropdownButton bsStyle="primary" className="currency-btn currency-dropdown" title="" pullRight
                                     id="bg-nested-dropdown">
                         {Object.keys(this.state.allCur).map((cur, i) => {
                             return (
-                                <MenuItem key={i} onClick={this.props.btnClick} /*className="currency-btn"
-                                        bsStyle="primary"*/
-                                          active={this.props.activeBtn === cur}>{cur}: {this.state.allCur[cur]}</MenuItem>
+                                <MenuItem key={i} onClick={this.props.btnClick}
+                                          active={this.props.activeBtn === cur}>{cur}: {this.state.allCur[cur]}
+                                </MenuItem>
                             )
                         })}
                     </DropdownButton>

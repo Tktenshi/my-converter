@@ -2,6 +2,11 @@
     font-size: 0.98em;
     padding: 0.5em 0.8em;
     margin: 0.3em auto;
+    width: 3.95em;
+}
+
+.currency-dropdown{
+    width: auto;
 }
 
 .dropdown-menu > li > a {
@@ -11,15 +16,14 @@
 .currency-btn+.dropdown-menu {
     height: 11.5em;
     overflow: auto;
-    /*grid-template-columns: 1fr 1fr;*/
 }
-
-/*.open > .currency-btn+.dropdown-menu {*/
-    /*display: grid;*/
-/*}*/
 
 @media screen and (max-width: 825px), screen and (max-device-width: 825px) {
     .currency-btn{
-        padding: 0.5em 0.4em;
+        width: 3.17em;
+        padding: 0.5em 0.35em;
+    }
+    .currency-dropdown{
+        width: auto;
     }
 }

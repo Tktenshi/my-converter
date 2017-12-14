@@ -108,3 +108,12 @@
         margin-top: -0.8em;
     }
 }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .about_text {
+        width: 100%;
+    }
+    .about_h1 {
+        width: 100%;
+    }
+}

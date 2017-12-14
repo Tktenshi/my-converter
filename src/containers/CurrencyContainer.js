@@ -4,7 +4,6 @@ import {sourceClick, targetClick, requestCurrencies} from "../actions/pageAction
 
 const mapStateToProps = (state) => {
     return {
-        // quickAccessCur: state.converterRed.quickAccessCur,
         sourceCur: state.converterRed.sourceCur,
     };
 };
@@ -18,7 +17,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(targetClick(currencyName))
         },
         requestCurrencies: function (currencyName) {
-            // console.log("Container dispatch requestCurrencies");
             dispatch(requestCurrencies(currencyName))
         }
     };

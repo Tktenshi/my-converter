@@ -10,16 +10,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       /* sourceClick: function (currencyName) {
-            dispatch(sourceClick(currencyName))
-        },
-        targetClick: function (currencyName) {
-            dispatch(targetClick(currencyName))
-        },
-        requestCurrencies: function (currencyName) {
-            // console.log("Container dispatch requestCurrencies");
-            dispatch(requestCurrencies(currencyName))
-        }*/
+        // sourceClick: function (currencyName) {
+        //     dispatch(sourceClick(currencyName))
+        // },
     };
 };
 

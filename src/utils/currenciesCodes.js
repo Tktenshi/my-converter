@@ -34,7 +34,6 @@ const data = {
     THB: {ru: "Тайский бат", en: "Thai baht",},
     TRY: {ru: "Турецкая лира", en: "Turkish lira",},
     ZAR: {ru: "Южноафриканский рэнд", en: "South African rand",},
-    OOO: {ru: "Тест", en: "Test",},
 };
 
 export default function getAllCur() {
@@ -42,7 +41,6 @@ export default function getAllCur() {
     const allCur = {};
     for (let key in data) {
         if (data.hasOwnProperty(key)) {
-            // getAllCur.push([key, data[key][lang]]);
             allCur[key] = data[key][lang];
         }
     }

@@ -1,28 +1,24 @@
 import {createAction} from 'redux-actions'
 import {
-    CHANGED_CURRENCY_DIRECTION, CHANGED_QUICK_CURRENCY_LIST, CURRENCIES_RESPONSE, SOURCE_CURRENCY_CHANGED,
+    CHANGED_CURRENCY_DIRECTION,
+    CHANGED_QUICK_CURRENCY_LIST,
+    CURRENCIES_RESPONSE,
+    HIDED_ALERT,
+    SHOW_ALERT,
+    SOURCE_CURRENCY_CHANGED,
     TARGET_CURRENCY_CHANGED
 } from "../consts/actionTypeConsts";
 import ApiError from "../utils/ApiExeption";
 import LangErr from "../utils/LangErr";
-// import Alert from "../components/Alert";
-// import {getItem} from "../utils/LocalStorage";
-// import {curLS, defaultCurrencies} from "../consts/settingsConsts";
-// import getQuickAccessCur from "../utils/getQuickAccessCur";
 
 export function requestCurrencies(currency) {
-    // console.log(currency);
     return function (dispatch) {
         fetch(`https://api.fixer.io/latest?base=${currency}`)
             .then(function (response) {
-                // console.log(response.headers.get('Content-Type')); // application/json; charset=utf-8
-                // console.log(response.status); // 200
-                // window.a = response.json();
                 if (response.status >= 300) throw new ApiError({status: response.status});
                 return response.json();
             })
             .then(function (data) {
-                console.log("ответ с сервера", data);
                 dispatch({
                     type: CURRENCIES_RESPONSE,
                     payload: data
@@ -42,17 +38,17 @@ export function requestCurrencies(currency) {
                     if (status)
                         switch (true) {
                             case status >= 500:
-                                alert(`${LangErr("Error")} ${status}! ${LangErr("500")}`);
+                                dispatch(showAlert(`${LangErr("Error")} ${status}! ${LangErr("500")}`));
                                 break;
                             case status >= 400:
-                                alert(`${LangErr("Error")} ${status}! ${LangErr("400")}`);
+                                dispatch(showAlert(`${LangErr("Error")} ${status}! ${LangErr("400")}`));
                                 break;
                             default:
-                                alert(`${LangErr("Error")} ${status}!`);
+                                dispatch(showAlert(`${LangErr("Error")} ${status}!`));
                         }
                 } else {
                     console.log(`Error name: ${err.name}, error message: ${err.message}`);
-                    alert(`${LangErr("Other")} ${LangErr("Send")}`);
+                    dispatch(showAlert(`${LangErr("Other")} ${LangErr("Send")}`));
                 }
             });
     }
@@ -75,3 +71,7 @@ export const targetClick = createAction(TARGET_CURRENCY_CHANGED);
 export const swapCurrenciesClick = createAction(CHANGED_CURRENCY_DIRECTION);
 
 export const changeQuickAccessCur = createAction(CHANGED_QUICK_CURRENCY_LIST);
+
+export const hideAlert = createAction(HIDED_ALERT);
+
+export const showAlert = createAction(SHOW_ALERT);

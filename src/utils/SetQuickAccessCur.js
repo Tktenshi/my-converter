@@ -1,13 +1,9 @@
-import {curLS, defaultCurrencies, numDafaultCur} from "../consts/settingsConsts";
+import {curLS, defaultCurrencies, numDefaultCur} from "../consts/settingsConsts";
 import {getItem} from "./LocalStorage";
 
 export default function getQuickAccessCur() {
     const userCur = getItem(curLS);
-    return userCur ? [...userCur, ...availability(userCur).slice(0, numDafaultCur - userCur.length)] : defaultCurrencies;
-    // const quickAccessCur = userCur ? [...userCur, ...availability(userCur).slice(0, 4 - userCur.length)] : defaultCurrencies;
-    // [].concat(!!getItem(curLS) && getItem(curLS), defaultCurrencies); //[...getItem(curLS) , ...defaultCurrencies];
-    // console.log("quickAccessCur", quickAccessCur);
-    // return ["GBR", "MYR", "RUB", "PHP"];
+    return userCur ? [...userCur, ...availability(userCur).slice(0, numDefaultCur - userCur.length)] : defaultCurrencies;
 }
 
 function availability(userCur) {

@@ -10,12 +10,10 @@ class Currency extends React.Component {
         this.state = {
             value: this.props.targetValue || initVal
         };
-        // console.log("я родился");
     }
 
     componentDidMount() {
         if (!this.props.targetValue) {
-            // console.log("отправляется запрос1");
             this.props.requestCurrencies(this.props.sourceCur);
             this.props.setSourceValue(this.state.value);
         }
@@ -25,7 +23,6 @@ class Currency extends React.Component {
         if (!!nextProps.targetValue) {
             this.setState({value: nextProps.targetValue});
         } else if (nextProps.sourceCur !== this.props.sourceCur) {
-            // console.log("отправляется запрос2");
             this.props.requestCurrencies(nextProps.sourceCur);
         }
     }
@@ -34,33 +31,33 @@ class Currency extends React.Component {
         if (!this.props.targetValue) {
             const str = evt.target.value.replace(",", ".");
             const regexp = new RegExp(`^\\d{0,${maxValLen}}(?:\\d\\.\\d{0,${roundUnitVal}})?$`);
-            // if (str && /^\d{1,9}(?:\.\d{0,4})?$/.test(str) && str.length <= maxValLen)
             if (regexp.test(str) && str.length <= maxValLen) {
                 this.setState({value: str});
-                this.props.setSourceValue(str)
+                this.props.setSourceValue(str);
+                this.props.logging();
             }
         }
     };
 
     sourceClick = (evt) => {
         const tc = evt.currentTarget.textContent.substr(0, numCharCur);
-        // console.log(tc);
         if (this.props.sourceCur !== tc) {
             this.props.sourceClick(tc);
-            // this.props.requestCurrencies(evt.currentTarget.textContent);
+            this.props.logging({sourseCur: tc});
         }
-        // this.props.setSourceValue(this.state.value)
     };
 
     targetClick = (evt) => {
-        this.props.targetClick(evt.currentTarget.textContent.substr(0, numCharCur));
+        const target = evt.currentTarget.textContent.substr(0, numCharCur);
+        this.props.targetClick(target);
+        this.props.logging({targetCur: target});
     };
 
     render() {
         return (
             <div className="currency">
                 <ControlLabel>{this.props.title}</ControlLabel>
-                <CurrencyBtnGroup /*symbols={this.props.quickAccessCur}*/ activeBtn={this.props.activeBtn}
+                <CurrencyBtnGroup activeBtn={this.props.activeBtn}
                                   btnClick={this.props.targetValue ? this.targetClick : this.sourceClick}/>
                 <InputGroup bsSize="large" className="currency_input-cont">
                     <FormControl type="text" placeholder="" className="currency_input" value={this.state.value}

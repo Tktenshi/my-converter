@@ -21,7 +21,6 @@
 }
 
 .settings_currencies {
-    /*margin-top: 0.7em;*/
     display: grid;
     grid-template-columns: repeat(3, max-content);
     justify-content: space-around;
@@ -85,5 +84,29 @@
 
     .settings_currencies {
         grid-template-columns: repeat(1, max-content);
+    }
+}
+
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .settings_text {
+        width: 100%;
+    }
+
+    .settings_currencies {
+        columns: 3;
+        width: 100%;
+    }
+
+    @media screen and (max-width: 1050px), screen and (max-device-width: 1050px) {
+        .settings_currencies {
+            columns: 2;
+        }
+    }
+
+    @media screen and (max-width: 1050px), screen and (max-device-width: 1050px) {
+        .settings_currencies {
+            columns: 1;
+        }
     }
 }
