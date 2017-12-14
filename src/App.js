@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {HashRouter, Route} from 'react-router-dom'
 import "bootswatch/cerulean/bootstrap.css";
 import './styles/app.css';
 import Header from "./components/Header";
@@ -24,7 +24,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className="app">
                     <Header changeLang={this.changeLang}/>
                     <Route exact path="/" component={Converter}/>
@@ -32,7 +32,7 @@ class App extends React.Component {
                     <Route path="/settings" component={Settings}/>
                     <Route path="/history" component={History}/>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }
