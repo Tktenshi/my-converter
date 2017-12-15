@@ -34,7 +34,7 @@ class Currency extends React.Component {
             if (regexp.test(str) && str.length <= maxValLen) {
                 this.setState({value: str});
                 this.props.setSourceValue(str);
-                this.props.logging();
+                // this.props.logging({sourceVal: str});
             }
         }
     };
@@ -43,14 +43,14 @@ class Currency extends React.Component {
         const tc = evt.currentTarget.textContent.substr(0, numCharCur);
         if (this.props.sourceCur !== tc) {
             this.props.sourceClick(tc);
-            this.props.logging({sourseCur: tc});
+            // this.props.logging({sourceCur: tc});
         }
     };
 
     targetClick = (evt) => {
         const target = evt.currentTarget.textContent.substr(0, numCharCur);
         this.props.targetClick(target);
-        this.props.logging({targetCur: target});
+        // this.props.logging({targetCur: target});
     };
 
     render() {

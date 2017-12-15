@@ -8,8 +8,6 @@ import {
     TARGET_CURRENCY_CHANGED
 } from "../consts/actionTypeConsts";
 import getQuickAccessCur from "../utils/SetQuickAccessCur";
-import {langLS, defaultLang} from "../consts/settingsConsts";
-import {getItem} from "../utils/LocalStorage";
 
 const quickAccessCur = getQuickAccessCur();
 

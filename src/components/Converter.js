@@ -12,7 +12,8 @@ class Converter extends React.Component {
         super();
         this.state = {
             sourceValue: null,
-        }
+        };
+        this.targetValue = " ";
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -30,9 +31,13 @@ class Converter extends React.Component {
         else return " "
     };
 
+    getCoeff = () => {
+        return this.props.targetCur === this.props.sourceCur ? unitV : this.props.currencyData && this.props.currencyData.rates && this.props.currencyData.rates[this.props.targetCur];
+    };
+
     swapCurrenciesClick = (evt) => {
         this.props.swapCurrenciesClick();
-        this.logging({sourseCur: this.props.targetCur, targetCur: this.props.sourceCur});
+        // this.logging({sourceCur: this.props.targetCur, targetCur: this.props.sourceCur});
     };
 
     dataOptions = {
@@ -43,15 +48,16 @@ class Converter extends React.Component {
         minute: 'numeric',
     };
 
-    logging = (data) => {
-        console.log("logging", this.props.sourceCur, this.props.targetCur);
-        console.log("logging2", data, new Date().toLocaleString("ru", this.dataOptions));
+    logging = (targetValue) => {
+        console.log("logging");
+        if (!targetValue || !+this.state.sourceValue) return;
+
         const arrLS = getItem(historyLS) || [];
         arrLS.push({
-            fromVal: 123456789,
-            fromCur: (data && data.sourceCur) || this.props.sourceCur,
-            toVal: 123456789123456789,
-            toCur: (data && data.targetCur) || this.props.targetCur,
+            fromVal: +this.state.sourceValue,
+            fromCur: this.props.sourceCur,
+            toVal: targetValue,
+            toCur: this.props.targetCur,
             date: new Date().toLocaleString("ru", this.dataOptions)
         });
         console.log(arrLS);
@@ -59,7 +65,14 @@ class Converter extends React.Component {
     };
 
     render() {
-        const coeff = this.props.targetCur === this.props.sourceCur ? unitV : this.props.currencyData && this.props.currencyData.rates && this.props.currencyData.rates[this.props.targetCur];
+        const coeff = this.getCoeff();
+        const targetValue = this.getTargetValue(coeff).toString();
+        console.log("targetValue", JSON.stringify(targetValue), JSON.stringify(this.targetValue));
+        if (targetValue !== this.targetValue) {
+            this.targetValue !== " " && this.logging(targetValue);
+            this.targetValue = targetValue === " " ? "" : targetValue;
+        }
+
         return (
             <div className="converter">
                 <Alert/>
@@ -76,7 +89,7 @@ class Converter extends React.Component {
                 <Currency title={Lang("I want to buy")}
                           unitVal={(coeff && `${unitV} ${this.props.targetCur} = ${+(unitV / coeff).toFixed(roundUnitVal)} ${this.props.sourceCur}`) || Lang("No Information")}
                           activeBtn={this.props.targetCur}
-                          targetValue={this.getTargetValue(coeff).toString()}
+                          targetValue={targetValue}
                           logging={this.logging}
                 />
             </div>

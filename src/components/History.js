@@ -3,24 +3,17 @@ import Lang from "../utils/Lang";
 import {Table} from "react-bootstrap";
 import '../styles/history.css';
 import {historyLS} from "../consts/settingsConsts";
-import {getItem, setItem} from "../utils/LocalStorage";
+import {getItem} from "../utils/LocalStorage";
 
 
 class History extends React.Component {
-    constructor() {
-        super();
-        // const a = [{fromVal: 123456789, fromCur: "EUR", toVal: 123456789123456789, toCur: "RUB", date: "01.12.15"},
-        //     {fromVal: 123456789, fromCur: "EUR", toVal: 123456789123456789, toCur: "RUB", date: "01.12.15"},
-        //     {fromVal: 123456789, fromCur: "EUR", toVal: 123456789123456789, toCur: "RUB", date: "01.12.15"},
-        //     {fromVal: 123456789, fromCur: "EUR", toVal: 123456789123456789, toCur: "RUB", date: "01.12.15"},
-        //     {fromVal: 123456789, fromCur: "EUR", toVal: 123456789123456789, toCur: "RUB", date: "01.12.15"},
-        // ];
-        // setItem(historyLS, a);
-        this.hist = getItem(historyLS) || [];
-        console.log(this.hist);
-    }
+    // constructor() {
+    //     super();
+    //     this.hist = getItem(historyLS) || [];
+    // }
 
     render() {
+        const hist = getItem(historyLS) || [];
         return (
             <div className="history">
                 <h1 className="history_h1">{Lang("History")}</h1>
@@ -34,7 +27,7 @@ class History extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.hist.map((row, i) => {
+                    {hist.map((row, i) => {
                         return (
                             <tr key={i}>
                                 <td>{i + 1}</td>
