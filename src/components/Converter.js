@@ -49,7 +49,6 @@ class Converter extends React.Component {
     };
 
     logging = (targetValue) => {
-        console.log("logging");
         if (!targetValue || !+this.state.sourceValue) return;
 
         const arrLS = getItem(historyLS) || [];
@@ -60,14 +59,12 @@ class Converter extends React.Component {
             toCur: this.props.targetCur,
             date: new Date().toLocaleString("ru", this.dataOptions)
         });
-        console.log(arrLS);
         setItem(historyLS, arrLS);
     };
 
     render() {
         const coeff = this.getCoeff();
         const targetValue = this.getTargetValue(coeff).toString();
-        console.log("targetValue", JSON.stringify(targetValue), JSON.stringify(this.targetValue));
         if (targetValue !== this.targetValue) {
             this.targetValue !== " " && this.logging(targetValue);
             this.targetValue = targetValue === " " ? "" : targetValue;
